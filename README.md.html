@@ -1,0 +1,269 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>README.md</title><style></style></head><body id="preview">
+<h1 class="code-line" data-line-start=0 data-line-end=1><a id="Facial_Recognition_0"></a>Facial Recognition</h1>
+<h3 class="code-line" data-line-start=1 data-line-end=2><a id="Author_1"></a>Author</h3>
+<p class="has-line-data" data-line-start="2" data-line-end="4">Name: Aqsa mahmood<br>
+Email: <a href="/cdn-cgi/l/email-protection#bcddcdcfdd92d1ddd4d1d3d3d8fcdfd5c8c592dddf92c9d7"><span class="__cf_email__" data-cfemail="41203032206f2c20292c2e2e2501222835386f20226f342a">[email&#160;protected]</span></a></p>
+<h3 class="code-line" data-line-start=4 data-line-end=5><a id="Hardware_Specification_4"></a>Hardware Specification</h3>
+<p class="has-line-data" data-line-start="5" data-line-end="6">This project was run on the following hardware specification:</p>
+<table class="table table-striped table-bordered">
+<thead>
+<tr>
+<th>Hardware</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>System Model:</td>
+<td>MS-7B93</td>
+</tr>
+<tr>
+<td>System Type</td>
+<td>x64-based PC</td>
+</tr>
+<tr>
+<td>Processor(s):</td>
+<td>AMD64 Family 23 Model 113 Stepping 0 AuthenticAMD ~3800 Mhz</td>
+</tr>
+<tr>
+<td>Graphics</td>
+<td>NVIDIA GeForce RTX 2070 SUPER</td>
+</tr>
+<tr>
+<td>BIOS Version:</td>
+<td>American Megatrends Inc. 1.00, 14/06/2019</td>
+</tr>
+<tr>
+<td>Total Physical Memory:</td>
+<td>16,332 MB</td>
+</tr>
+</tbody>
+</table>
+<h3 class="code-line" data-line-start=14 data-line-end=15><a id="Code_Structure_14"></a>Code Structure</h3>
+<pre><code class="has-line-data" data-line-start="16" data-line-end="54">GANKneeMRI2
+│   README.md
+│   environment.yml.yml    
+│   setup.bat
+│   setup.sh 
+└───src
+│   └───models
+│       │   mrnet.py
+│       │   resnet_G_and_C.py
+│   └───utils
+│       │   data_load.py
+│       │   fid.py
+│       │   knee_mri_viewer.ipynb
+│       │   logger.py
+│       │   utilities.py
+│   └───training
+│       │   baseline_model_training.py
+│       │   wasserstein_GP_256.py
+│   └───traininer
+│       │   basenet_model_task.py
+│       │   wgan_task.py
+│   └───bash_scripts
+│       │   base-mode-train-cloud.bat
+│       │   base-mode-train-cloud.sh
+│       │   wgan-model-train.bat
+│       │   wgan-model-train.sh
+│       │   mrnet-model-train.bat
+│       │   mrnet-model-train.sh
+│   └───model_weights
+│       │   ....
+│       │   ....
+│   │   Dockerfile
+│   │   Evaluating_classificationPerf .py
+│   │   mrNet_main.py
+│   │   setup.py
+│   │   testing_GAN_model.py
+│   │   wgan_main.py
+</code></pre>
+<h3 class="code-line" data-line-start=54 data-line-end=55><a id="Python_FileFolder_Description_54"></a>Python File/Folder Description</h3>
+<ul>
+<li class="has-line-data" data-line-start="55" data-line-end="56">testing_GAN_model.- this file essentially allows test mri scans to be genrated from the trained WGAN models</li>
+<li class="has-line-data" data-line-start="56" data-line-end="57">mrNet_main.py - this file essentially allows the training of the baseline model</li>
+<li class="has-line-data" data-line-start="57" data-line-end="58">wgan_main.py - this file essentially allows the training of WGAN</li>
+<li class="has-line-data" data-line-start="58" data-line-end="59"><a href="http://untilities.py">untilities.py</a> - this file contains general utility functions used throught the files</li>
+<li class="has-line-data" data-line-start="59" data-line-end="60">dataset_loader.py - contains functions to allow loading the MRI Dataset</li>
+<li class="has-line-data" data-line-start="60" data-line-end="61"><a href="http://mrnet.py">mrnet.py</a> - contains the baseline model</li>
+<li class="has-line-data" data-line-start="61" data-line-end="62">resnet_G_and_C.py - contains WGAN Models Discriminator and Generator</li>
+<li class="has-line-data" data-line-start="62" data-line-end="63"><a href="http://setup.py">setup.py</a> - this file is for Google Cloud purposes and is not yet functinal. The contents of this can be ignored.</li>
+<li class="has-line-data" data-line-start="63" data-line-end="64">Dockerfile - this file is for Google Cloud purposes and is not yet functinal</li>
+<li class="has-line-data" data-line-start="64" data-line-end="65">/trainer - this directory is for Google Cloud purposes and is not yet functinal</li>
+</ul>
+<h3 class="code-line" data-line-start=65 data-line-end=66><a id="Model_Downloads_65"></a>Model Downloads</h3>
+<p class="has-line-data" data-line-start="66" data-line-end="67">The ‘model_weights’ directory located in src folder contains weights of the trained WGAN models</p>
+<h3 class="code-line" data-line-start=69 data-line-end=70><a id="Installation_69"></a>Installation</h3>
+<p class="has-line-data" data-line-start="70" data-line-end="73">First, install <a href="https://www.python.org/downloads/">Python 3.7</a> and <a href="https://docs.anaconda.com/anaconda/install/">Anconda</a><br>
+Then we need to setup the anaconda enviroment.<br>
+On a linux environment, navigate to the FacialRecognition project, run the follwing on command line as super user:</p>
+<pre><code class="has-line-data" data-line-start="74" data-line-end="76" class="language-sh">$ ./setup.sh
+</code></pre>
+<p class="has-line-data" data-line-start="76" data-line-end="77">This script shouuld create the conda enviroment, with all devlopment dependencies, and activate the environment ‘project2020’</p>
+<table class="table table-striped table-bordered">
+<thead>
+<tr>
+<th>Depenedency</th>
+<th>Version</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>python</td>
+<td>3.7.6</td>
+</tr>
+<tr>
+<td>pytorch</td>
+<td>1.2.0</td>
+</tr>
+<tr>
+<td>pillow</td>
+<td>6.1</td>
+</tr>
+<tr>
+<td>torchvision</td>
+<td>0.4.0</td>
+</tr>
+<tr>
+<td>fastai</td>
+<td>1.0.57</td>
+</tr>
+<tr>
+<td>ipykernel:</td>
+<td>4.6.1</td>
+</tr>
+<tr>
+<td>pytest</td>
+<td>3.6.4</td>
+</tr>
+<tr>
+<td>bqplot</td>
+<td></td>
+</tr>
+<tr>
+<td>scikit-learn</td>
+<td>0.19.1</td>
+</tr>
+<tr>
+<td>pip</td>
+<td>19.0.3</td>
+</tr>
+<tr>
+<td>cython</td>
+<td>0.29.1 v</td>
+</tr>
+<tr>
+<td>papermill</td>
+<td>1.2.0</td>
+</tr>
+<tr>
+<td>black</td>
+<td>18.6b4 v</td>
+</tr>
+<tr>
+<td>ipywebrtc</td>
+<td></td>
+</tr>
+<tr>
+<td>lxml</td>
+<td>4.3.2</td>
+</tr>
+<tr>
+<td>pre-commit</td>
+<td>1.14.4</td>
+</tr>
+<tr>
+<td>pyyaml</td>
+<td>5.1.2</td>
+</tr>
+<tr>
+<td>requests</td>
+<td>2.22.0 v</td>
+</tr>
+<tr>
+<td>einops</td>
+<td>0.1.0</td>
+</tr>
+<tr>
+<td>cytoolz</td>
+<td></td>
+</tr>
+<tr>
+<td>seaborn</td>
+<td></td>
+</tr>
+<tr>
+<td>mtcnn</td>
+<td></td>
+</tr>
+<tr>
+<td>scikit-image</td>
+<td></td>
+</tr>
+<tr>
+<td>decord</td>
+<td>0.3.5</td>
+</tr>
+<tr>
+<td>nvidia-ml-py3</td>
+<td></td>
+</tr>
+<tr>
+<td>nteract-scrapbook</td>
+<td></td>
+</tr>
+<tr>
+<td>azureml-sdk[notebooks,contrib]</td>
+<td>1.0.30</td>
+</tr>
+<tr>
+<td>facenet-pytorch</td>
+<td></td>
+</tr>
+<tr>
+<td>opencv-python</td>
+<td>3.4.2.16</td>
+</tr>
+<tr>
+<td>opencv-contrib-python</td>
+<td>3.4.2.16</td>
+</tr>
+<tr>
+<td>jupyter</td>
+<td>1.0.0</td>
+</tr>
+<tr>
+<td>spyder</td>
+<td>4.1.3</td>
+</tr>
+</tbody>
+</table>
+<p class="has-line-data" data-line-start="112" data-line-end="113">On a windows environment, can run the following script via Anaconda Prompt :</p>
+<pre><code class="has-line-data" data-line-start="114" data-line-end="116" class="language-sh">$ setup.bat
+</code></pre>
+<p class="has-line-data" data-line-start="116" data-line-end="117">Note that setuping up the environment does take some time. Once, the the script has finished, the environment ‘project2020’. On the same Anaconda Prompt, spyder can be launched via the follwing command:</p>
+<pre><code class="has-line-data" data-line-start="119" data-line-end="121" class="language-sh">$ spyder
+</code></pre>
+<h3 class="code-line" data-line-start=123 data-line-end=124><a id="Running_Application_123"></a>Running Application</h3>
+<p class="has-line-data" data-line-start="125" data-line-end="126">The python files of interest is <strong>wgan_main.py</strong> and <strong>mrNet_main.py</strong>. These python files can be invoked via scripts located in the ‘bash_scripts’ directory. The wgan-model-train.bat will run the wgan_main.py file, and will start WGAN training. The batch file can be invoked via Anaconda Prompt with the follwing example command:</p>
+<pre><code class="has-line-data" data-line-start="127" data-line-end="129" class="language-sh">$ wgan-model-train.bat --base-results-dir=<span class="hljs-string">"D:/results"</span> --data-dir=<span class="hljs-string">"C:/Users/adds0/OneDrive - University of Glasgow/Documnets/courses/Msc/Project/MRI/MRNet/resources"</span> --plane=axial --diagnoses=ACL --dataset-type=train
+</code></pre>
+<p class="has-line-data" data-line-start="129" data-line-end="130">The above argument call would train a WGAN model for the dataset that is of axial plane and which have a diagnosis of ACL. Note that the first argument ‘–base-results-dir’ is the resutls directory path, and the second argument, ‘–data-dir’, is the location of the original dataset.</p>
+<p class="has-line-data" data-line-start="131" data-line-end="132">The <a href="http://wgan-model-train.sh">wgan-model-train.sh</a> can be run from Anaconda Prompt by invoking the follwing command:</p>
+<pre><code class="has-line-data" data-line-start="133" data-line-end="135" class="language-sh">$ wgan-model-train.sh --base-results-dir=<span class="hljs-string">"D:/results"</span> --data-dir=<span class="hljs-string">"C:/Users/adds0/OneDrive - University of Glasgow/Documnets/courses/Msc/Project/MRI/MRNet/resources"</span> --plane=<span class="hljs-string">'axial'</span> --diagnoses=<span class="hljs-string">'ACL'</span> --dataset-type=<span class="hljs-string">'train'</span>  
+</code></pre>
+<p class="has-line-data" data-line-start="135" data-line-end="136">*<strong>Note before invoking the <a href="http://wgan-model-train.sh">wgan-model-train.sh</a>, it needs to be made executable with the follwing command</strong>:</p>
+<pre><code class="has-line-data" data-line-start="137" data-line-end="139" class="language-sh">$ chmod u+x wgan-model-train.sh  
+</code></pre>
+<p class="has-line-data" data-line-start="140" data-line-end="141">If one wants to train a WGAN model for a differet plane, then one can specify ‘sagittal’ or ‘coronal’. Alternatively, if WGAN need to be trained for a diferent diagnoses, the follwing options are avilable:</p>
+<ul>
+<li class="has-line-data" data-line-start="141" data-line-end="142">‘Abnormal’ - only selects scans that are only abnormal</li>
+<li class="has-line-data" data-line-start="142" data-line-end="143">‘Meniscus’- only selects scans that are only Meniscus</li>
+<li class="has-line-data" data-line-start="143" data-line-end="144">‘All’ - selects scans that are all ACL,Meniscus and Abnormal</li>
+<li class="has-line-data" data-line-start="144" data-line-end="146">‘None’ - selects scans that are normal</li>
+</ul>
+<p class="has-line-data" data-line-start="146" data-line-end="147">The mrnet-model-train.bat will run the mrNet_main.py file, and will start base model training with or without the augmented dataset . The batch file can be invoked via Anaconda Prompt with the follwing example command:</p>
+<pre><code class="has-line-data" data-line-start="148" data-line-end="150" class="language-sh">$ mrnet-model-train.bat --base-results-dir=<span class="hljs-string">"D:/results"</span> --data-dir=<span class="hljs-string">"C:/Users/adds0/OneDrive - University of Glasgow/Documnets/courses/Msc/Project/MRI/MRNet/resources"</span> --plane=axial --dataset-type=train --epochs=<span class="hljs-number">100</span>
+</code></pre>
+<p class="has-line-data" data-line-start="150" data-line-end="151">The above argument call would train a Base MRNet model for the dataset that is of axial plane without a augmented dataset. Note that the first argument ‘–base-results-dir’ is the resutls directory path, and the second argument, ‘–data-dir’, is the location of the original dataset. To include training with an augmented dataset,specify ‘–augmented-data-dir’ with the directory which contains the augemnted dataset. Ensure the directory structure is similar to the contents within ‘–data-dir’. Again,If one wants to train the baseline model for a differet plane, then one can specify ‘sagittal’ or ‘coronal’.</p>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script></body></html>
